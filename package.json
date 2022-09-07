@@ -11,9 +11,14 @@
     "docs": "webpack-dev-server --mode development --hot --open --port 4697",
     "docs:prod": "webpack --mode production",
     "lint": " ./node_modules/.bin/eslint src --ext .jsx --ext .js --fix",
+
+    "build": "npm i -dev && webpack --mode production",
+    "heroku-postbuild": "npm build",
+
     "engines":{
       "node":"v16.7.0"
     }
+
   },
   
   "keywords": [
