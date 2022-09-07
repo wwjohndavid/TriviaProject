@@ -15,12 +15,12 @@
     "build": "npm i -dev && webpack --mode production",
     "heroku-postbuild": "npm run build",
 
-    "engines":{
-      "node":"v16.7.0"
-    }
-
   },
   
+  "engines":{
+    "node":"v16.7.0"
+  },
+
   "keywords": [
     "react",
     "reactjs",
