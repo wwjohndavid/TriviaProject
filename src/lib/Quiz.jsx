@@ -8,6 +8,9 @@ const Quiz = function ({
   showInstantFeedback, continueTillCorrect, revealAnswerOnSubmit,
   allowNavigation, onQuestionSubmit, disableSynopsis,
 }) {
+
+
+  
   const [start, setStart] = useState(false);
   const [questions, setQuestions] = useState(quiz.questions);
   const nrOfQuestions = (quiz.nrOfQuestions && quiz.nrOfQuestions < quiz.questions.length) ? quiz.nrOfQuestions : quiz.questions.length;
@@ -47,7 +50,7 @@ const Quiz = function ({
 
     for (let i = 0; i < questions.length; i += 1) {
       const {
-        question, type, answerSelectionType, answers, correctAnswer,category,
+        question, type, answerSelectionType, answers, correctAnswer, category,
       } = questions[i];
       if (!question) {
         console.error("Field 'question' is required.");
@@ -125,7 +128,7 @@ const Quiz = function ({
               <button onClick={() => setStart(true)} className="startQuizBtn btn">{appLocale.startQuizBtn}</button>
             </div>
           </div>
-          )}
+      )}
 
       {start && (
         <Core

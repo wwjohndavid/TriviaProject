@@ -9,9 +9,8 @@
     "lib": "babel src/lib -d lib --copy-files",
     "lib:watch": "babel src/lib -w -d lib --copy-files",
     "docs": "webpack-dev-server --mode development",
-    "docs:prod": "webpack --mode production",
     "lint": " ./node_modules/.bin/eslint src --ext .jsx --ext .js --fix"
-
+  
     },
   
   "engines":{

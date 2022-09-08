@@ -6,7 +6,7 @@ import { checkAnswer, selectAnswer, rawMarkup } from './core-components/helpers'
 import InstantFeedback from './core-components/InstantFeedback';
 import Explanation from './core-components/Explanation';
 
-function Core({
+const Core = function ({
   questions, appLocale, showDefaultResult, onComplete, customResultPage,
   showInstantFeedback, continueTillCorrect, revealAnswerOnSubmit, allowNavigation,
   onQuestionSubmit,
@@ -85,7 +85,7 @@ function Core({
       onComplete(questionSummary);
     }
   }, [endQuiz, questionSummary]);
-  const playAgain = () =>{
+  const playAgain = () => {
     setEndQuiz(false);
     setUserInput([]);
     setCurrentQuestionIndex(0);
@@ -282,7 +282,7 @@ function Core({
       </div>
     );
   };
-  
+
   const renderResult = () => (
     <div className="card-body">
       {/* <h2>
@@ -290,7 +290,7 @@ function Core({
           .replace('<correctIndexLength>', correct.length)
           .replace('<questionLength>', questions.length)}
       </h2> */}
-      <h2 className = "textCenter">
+      <h2 className="textCenter">
         {appLocale.resultPagePoint
           .replace('<correctPoints>', correctPoints)
           .replace('<totalPoints>', totalPoints)}
@@ -302,35 +302,34 @@ function Core({
         appLocale={appLocale}
       />
       {renderQuizResultQuestions()}
-      
+
       <button onClick={() => playAgain()} className="nextQuestionBtn btn" type="button">
-              {"Play Again?"}
+        Play Again?
       </button>
     </div>
   );
   return (
     <div className="questionWrapper">
-      
-     
+
       {!beginQuiz && (
         <div>
-           <h1>
+          <h1>
             Welcome to the Trivia Challenge
-           </h1>
-           <h2>
+          </h1>
+          <h2>
             You will be presented with 10 True or False question.
-           </h2>
-           <h2>
-              Can you score 100%?
-           </h2>
-           <button onClick={() => setBeginQuiz(true)} className="nextQuestionBtn btn" type="button">
-              {"Begin"}
-            </button>
+          </h2>
+          <h2>
+            Can you score 100%?
+          </h2>
+          <button onClick={() => setBeginQuiz(true)} className="nextQuestionBtn btn" type="button">
+            Begin
+          </button>
         </div>
       )}
       {beginQuiz && (
-          <div>
-             {!endQuiz
+      <div>
+        {!endQuiz
               && (
               <div className="questionWrapperBody">
                 <h1>
@@ -346,10 +345,10 @@ function Core({
                     userAnswer={[...userInput].pop()}
                   />
                 </div>
-                <div className="result-answer-wrapper" >
-                   <h3 dangerouslySetInnerHTML={rawMarkup(question && question.question)} />
+                <div className="result-answer-wrapper">
+                  <h3 dangerouslySetInnerHTML={rawMarkup(question && question.question)} />
                 </div>
-               
+
                 {question && question.questionPic && <img src={question.questionPic} alt="image" />}
                 {/* {question && renderTags(answerSelectionTypeState, question.correctAnswer.length, question.segment)} */}
                 {question && renderAnswers(question, buttons)}
@@ -362,7 +361,7 @@ function Core({
                       className="prevQuestionBtn btn"
                       type="button"
                     >
-                    {appLocale.prevQuestionBtn}
+                      {appLocale.prevQuestionBtn}
                     </button>
                   )}
                   <button onClick={() => nextQuestion(currentQuestionIndex)} className="nextQuestionBtn btn" type="button">
@@ -372,14 +371,14 @@ function Core({
                 )}
               </div>
               )}
-            {endQuiz && showDefaultResultState && customResultPage === undefined
+        {endQuiz && showDefaultResultState && customResultPage === undefined
                 && renderResult()}
-            {endQuiz && !showDefaultResultState && customResultPage !== undefined
+        {endQuiz && !showDefaultResultState && customResultPage !== undefined
                 && customResultPage(questionSummary)}
-            </div>
-      )} 
+      </div>
+      )}
     </div>
   );
-} 
+};
 
 export default Core;
