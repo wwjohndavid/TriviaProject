@@ -177,7 +177,7 @@ Object
 
 ## Demo
 
-The demo is available at https://wingkwong.github.io/react-quiz-component/
+The demo is available at http://192.168.8.145:4697/
 
 ## License
 
